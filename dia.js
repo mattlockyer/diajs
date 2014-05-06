@@ -64,27 +64,25 @@ var DIA = (function(exports) {
 		modalClose.on('click', close);
 	};
 
-	(function() {
-		var link = document.createElement('link');
-		link.setAttribute('rel', 'stylesheet');
-		link.setAttribute('href', 'dia.css');
-		document.getElementsByTagName('head')[0].appendChild(link);
-		if (jQuery) {
-			init();
-			return;
-		}
-		console.log('loading jQuery');
-		var script = document.createElement('script');
-		script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js';
-		document.getElementsByTagName('head')[0].appendChild(script);
-		var checkReady = function(callback) {
-			if (jQuery) callback(jQuery);
-			else setTimeout(function() { checkReady(callback); }, 100);
-		};
-		checkReady(function($) {
-			init();
-		});
-	}());
+	var link = document.createElement('link');
+	link.setAttribute('rel', 'stylesheet');
+	link.setAttribute('href', 'dia.css');
+	document.getElementsByTagName('head')[0].appendChild(link);
+	if (jQuery === undefined) {
+		init();
+		return;
+	}
+	console.log('loading jQuery');
+	var script = document.createElement('script');
+	script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js';
+	document.getElementsByTagName('head')[0].appendChild(script);
+	var checkReady = function(callback) {
+		if (jQuery) callback(jQuery);
+		else setTimeout(function() { checkReady(callback); }, 100);
+	};
+	checkReady(function($) {
+		init();
+	});
 
 	exports.alert = alert;
 	exports.confirm = confirm;
