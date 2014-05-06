@@ -54,6 +54,8 @@
 }
 
 .dia-input {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size:24px;
 	border:1px solid #444;
 	margin-top:8px;
 	padding-left:8px;

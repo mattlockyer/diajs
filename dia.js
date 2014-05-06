@@ -2,7 +2,7 @@
 
 var DIA = (function(exports) {
 
-	var overlay, modal, modalText, modalClose, confirmButtons, promptInput;
+	var onloadCallback, overlay, modal, modalText, modalClose, confirmButtons, promptInput;
 
 	var close = function() {
 		overlay.hide();
@@ -62,22 +62,26 @@ var DIA = (function(exports) {
 		modalText = $('#dia-modal .dia-text');
 		modalClose = $('#dia-modal .dia-close');
 		modalClose.on('click', close);
+		if (onloadCallback) onloadCallback();
+	};
+
+	var onload = function(callback) {
+		onloadCallback = callback;
 	};
 
 	var link = document.createElement('link');
 	link.setAttribute('rel', 'stylesheet');
 	link.setAttribute('href', 'dia.css');
 	document.getElementsByTagName('head')[0].appendChild(link);
-	if (jQuery === undefined) {
+	if (typeof jQuery !== 'undefined') {
 		init();
 		return;
 	}
-	console.log('loading jQuery');
 	var script = document.createElement('script');
 	script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js';
 	document.getElementsByTagName('head')[0].appendChild(script);
 	var checkReady = function(callback) {
-		if (jQuery) callback(jQuery);
+		if (typeof jQuery !== 'undefined') callback(jQuery);
 		else setTimeout(function() { checkReady(callback); }, 100);
 	};
 	checkReady(function($) {
@@ -87,6 +91,7 @@ var DIA = (function(exports) {
 	exports.alert = alert;
 	exports.confirm = confirm;
 	exports.prompt = prompt;
+	exports.onload = onload;
 
 	return exports;
 }(DIA || {}));
