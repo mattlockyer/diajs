@@ -29,7 +29,7 @@ var DIA = (function(exports) {
 
 	var confirm = function(msg, callback, buttons, isPrompt) {
 		if (!buttons) buttons = {OK:true, Cancel:false};
-		html = '<div class="dia-buttons">';
+		var html = '<div class="dia-buttons">';
 		for (var key in buttons) {
 			html += '<div class="dia-button" data-value="' + buttons[key] + '">' + key + '</div>';
 		}
