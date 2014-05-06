@@ -20,12 +20,6 @@ jQuery (load from google if not in page)
 DIA.alert('Hip Hop, Horray');
 ```
 
-#### Alert
-
-```js
-DIA.alert('Hip Hop, Horray');
-```
-
 #### Confirm
 
 ```js
