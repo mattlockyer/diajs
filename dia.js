@@ -1,4 +1,4 @@
-
+"use strict";
 
 var DIA = (function(exports) {
 
@@ -62,6 +62,8 @@ var DIA = (function(exports) {
 		modalText = $('#dia-modal .dia-text');
 		modalClose = $('#dia-modal .dia-close');
 		modalClose.on('click', close);
+
+		console.log(modalClose);
 		if (onloadCallback) onloadCallback();
 	};
 
@@ -75,18 +77,18 @@ var DIA = (function(exports) {
 	document.getElementsByTagName('head')[0].appendChild(link);
 	if (typeof jQuery !== 'undefined') {
 		init();
-		return;
+	} else {
+		var script = document.createElement('script');
+		script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js';
+		document.getElementsByTagName('head')[0].appendChild(script);
+		var checkReady = function(callback) {
+			if (typeof jQuery !== 'undefined') callback(jQuery);
+			else setTimeout(function() { checkReady(callback); }, 100);
+		};
+		checkReady(function($) {
+			init();
+		});
 	}
-	var script = document.createElement('script');
-	script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js';
-	document.getElementsByTagName('head')[0].appendChild(script);
-	var checkReady = function(callback) {
-		if (typeof jQuery !== 'undefined') callback(jQuery);
-		else setTimeout(function() { checkReady(callback); }, 100);
-	};
-	checkReady(function($) {
-		init();
-	});
 
 	exports.alert = alert;
 	exports.confirm = confirm;
