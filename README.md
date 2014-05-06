@@ -2,6 +2,10 @@
 
 Simple, Plain, Customizable JS Dialogs.
 
+### Demo
+
+http://mattlockyer.github.io/diajs/
+
 ### Dependencies
 
 jQuery (loaded from google if undefined)
