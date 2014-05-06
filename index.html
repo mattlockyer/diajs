@@ -2,13 +2,31 @@
     <head>
         <title>Dia.js Example</title>
     </head>
+    
+    <script>
+        $(document).ready(function() {
+            $('#alert').on('click', function() {
+                DIA.alert('Hip Hop, Horray');
+            });
+            $('#confirm').on('click', function() {
+                DIA.confirm('Which type of music do you prefer?', function(value) {
+                  console.log(value);
+                }, {'Hip Hop':'Hooray', 'Metal':'Burn Everything'});
+            });
+            $('#prompt').on('click', function() {
+                DIA.prompt('How old are you?', function(value) {
+                  console.log(value);
+                }, 'my age', {'Yes, that is correct'});
+            });
+        });
+    </script>
     <body>
 
-        <button>Alert</button>
+        <button id="alert">Alert</button>
         
-        <button>Confirm</button>
+        <button id="confirm">Confirm</button>
         
-        <button>Prompt</button>
+        <button id="prompt">Prompt</button>
         
         <script src="dia.js"></script>
         
