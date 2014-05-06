@@ -33,5 +33,5 @@ DIA.confirm('Which type of music do you prefer?', function(value) {
 ```js
 DIA.prompt('How old are you?', function(value) {
   console.log(value);
-}, 'my age', {'Yes, that is correct'});
+}, 'my age', {'Yes, that is correct':true});
 ```
