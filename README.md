@@ -4,7 +4,7 @@ Simple, Plain, Customizable JS Dialogs.
 
 ### Dependencies
 
-jQuery (load from google if not in page)
+jQuery (loaded from google if undefined)
 
 ### Setup
 
