@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+    <title>Dia.js Example</title>
+</head>
+
+<body>
+
+    <button id="alert">Alert</button>
+
+    <button id="confirm">Confirm</button>
+
+    <button id="prompt">Prompt</button>
+
+    <script src="dia.js"></script>
+    <script>
+        DIA.onload(function() {
+            $('#alert').on('click', function() {
+                DIA.alert('Hip Hop, Horray');
+            });
+            $('#confirm').on('click', function() {
+                DIA.confirm('Which type of music do you prefer?', function(value) {
+                  console.log(value);
+              }, {'Hip Hop':'Hooray', 'Metal':'Burn Everything'});
+            });
+            $('#prompt').on('click', function() {
+                DIA.prompt('How old are you?', function(value) {
+                  console.log(value);
+              }, 'my age', {'Yes, that is correct':true});
+            });
+        });
+    </script>
+
+</body>
+</html>
